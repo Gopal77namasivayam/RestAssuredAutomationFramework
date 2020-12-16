@@ -13,7 +13,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 
-public class UpdateUsersTest {
+public class DeleteUsers {
 	
 	String baseURI = "https://gorest.co.in";
 	String basePath = "/public-api/users";
@@ -21,24 +21,24 @@ public class UpdateUsersTest {
 	
 	
 	@Test
-	public void updateUserTest()
+	public void deleteUserTest()
 	{
 		Map<String,String> tokenMap= new HashMap<String, String>();
 		tokenMap.put("Authorization", "Bearer "+ Token);
-		UserFromPojo user=new UserFromPojo("Aash Gopal","ashasuccess3@gmail.com","Female","Active");
+		UserFromPojo user=new UserFromPojo("Aash Gopal","ashasuccess4@gmail.com","Female","Active");
 		Response response=Restclient.doPost(baseURI, "JSON", tokenMap, null, basePath, true, user);
 		System.out.println(response.prettyPrint());
 		System.out.println("Status code received is"+response.statusCode());
 		JsonPath userJson=response.jsonPath();
 		Object userid=userJson.get("data.id");
 		System.out.println("user id is"+userid);
-		user.setName("Asha Ayyappan");
-		Response Updatedresponse=Restclient.doPut(baseURI, "JSON", tokenMap, null, "/public-api/users/"+ userid, true, user);
+		 
+		Response Updatedresponse=Restclient.doDelete(baseURI, "JSON", tokenMap, null, "/public-api/users/"+ userid, true, user);
 		JsonPath UpdateduserJson=Updatedresponse.jsonPath();
 		System.out.println(UpdateduserJson.prettyPrint());
-		Object updatedUsername=UpdateduserJson.get("data.name");
-		System.out.println("Updated user name is"+updatedUsername);
-		Assert.assertEquals(updatedUsername, user.getName());
+		Object datavalue=UpdateduserJson.get("data");
+		System.out.println("data value is"+datavalue);
+		Assert.assertEquals(datavalue, null);
 		
 		 
 	}

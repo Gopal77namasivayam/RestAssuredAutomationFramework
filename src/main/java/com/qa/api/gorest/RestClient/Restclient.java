@@ -61,6 +61,33 @@ public class Restclient {
 		}
 		return null;
 	}
+	
+	public static Response doPut(String baseURI, String contentType, Map<String, String> Token,
+			Map<String, String> paramMaps, String basePath, boolean log, Object obj) {
+		
+		if (setBaseURI(baseURI))
+
+		{
+			RequestSpecification request = createRequest(log, contentType, Token, paramMaps);
+			addRequestPayLoad(request, obj);
+			return getResponse("PUT", request, basePath);
+		}
+		return null;
+	}
+	
+	
+	public static Response doDelete(String baseURI, String contentType, Map<String, String> Token,
+			Map<String, String> paramMaps, String basePath, boolean log, Object obj) {
+		
+		if (setBaseURI(baseURI))
+
+		{
+			RequestSpecification request = createRequest(log, contentType, Token, paramMaps);
+			addRequestPayLoad(request, obj);
+			return getResponse("DELETE", request, basePath);
+		}
+		return null;
+	}
 
 	public static void addRequestPayLoad(RequestSpecification request, Object obj) {
 		if (obj instanceof Map) {

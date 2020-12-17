@@ -15,17 +15,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class Restclient {
 	// HTTP methods GET,POST,PUT and DELETE
-	/**
-	 * This method used to call getAPI
-	 * 
-	 * @param baseURI
-	 * @param contentType
-	 * @param Token
-	 * @param paramMaps
-	 * @param basePath
-	 * @param log
-	 * @return this method returning response from the get call
-	 */
+	
 
 	public static Response doGet(String baseURI, String contentType, Map<String, String> Token,
 			Map<String, String> paramMaps, String basePath, boolean log) {
@@ -38,17 +28,7 @@ public class Restclient {
 		return null;
 	}
 
-	/**
-	 * 
-	 * @param baseURI
-	 * @param contentType
-	 * @param Token
-	 * @param paramMaps
-	 * @param basePath
-	 * @param log
-	 * @param obj         is super class for all object
-	 * @return This method returns the response from the post call
-	 */
+	
 	public static Response doPost(String baseURI, String contentType, Map<String, String> Token,
 			Map<String, String> paramMaps, String basePath, boolean log, Object obj) {
 		
@@ -131,8 +111,9 @@ public class Restclient {
 				request.multiPart("image", new File("C:\\Users\\Namasivayam\\Desktop\\images\\gopal.jpeg"));
 			}
 		}
-
-		if (Token.size() > 0) {
+		//if (Token.size() > 0)  
+		 
+		if (!(Token==null)) {
 			// request.header("Authorization", "Bearer " + Token);
 			request.headers(Token);
 		}

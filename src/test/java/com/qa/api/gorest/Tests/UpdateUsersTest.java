@@ -25,7 +25,7 @@ public class UpdateUsersTest {
 	{
 		Map<String,String> tokenMap= new HashMap<String, String>();
 		tokenMap.put("Authorization", "Bearer "+ Token);
-		UserFromPojo user=new UserFromPojo("Aash Gopal","ashasuccess3@gmail.com","Female","Active");
+		UserFromPojo user=new UserFromPojo("Aash Gopal","ashasuccess4@gmail.com","Female","Active");
 		Response response=Restclient.doPost(baseURI, "JSON", tokenMap, null, basePath, true, user);
 		System.out.println(response.prettyPrint());
 		System.out.println("Status code received is"+response.statusCode());

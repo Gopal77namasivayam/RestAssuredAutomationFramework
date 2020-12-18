@@ -25,7 +25,7 @@ public class FinalBookingPojo {
 	System.out.println(response.prettyPrint());
 	Object bookinID =jsonPath.get("bookingid");
 	Object nameinpost =jsonPath.get("booking.firstname");
-	System.out.println("Generated Booking is "+bookinID);
+	//System.out.println("Generated Booking is "+bookinID);
 	Response getResponse=Restclient.doGet(baseURI, "JSON", null, null, "/booking/"+bookinID, true);
 	System.out.println("get booking json response is"+getResponse.prettyPrint());
 	JsonPath getBookingJson = getResponse.jsonPath();

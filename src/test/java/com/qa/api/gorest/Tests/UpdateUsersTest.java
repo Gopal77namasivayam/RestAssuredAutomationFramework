@@ -9,17 +9,26 @@ import org.testng.annotations.Test;
 import com.qa.api.gorest.Pojo.UserFromPojo;
 import com.qa.api.gorest.RestClient.Restclient;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
-
+@Epic("222....This suit will examine all kind of Post calls in GoRestAPI....") 
+@Feature("*** POST API-GoRest***")
 public class UpdateUsersTest {
 	
 	String baseURI = "https://gorest.co.in";
 	String basePath = "/public-api/users";
 	String Token = "a2662a77b08f58d659932dffe3cb92b732aeca5f27dabfb5de4dbb3f3f9de038";
 	
-	
+	@Description("-- create  users API call---" )
+	@Severity(SeverityLevel.BLOCKER)
+	@Step("Post call with {0},{1},{2},{3}")
 	@Test
 	public void updateUserTest()
 	{
